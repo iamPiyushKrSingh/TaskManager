@@ -1,0 +1,36 @@
+import React, { useState } from "react";
+
+const TaskForm = ({ addTask }) => {
+  const [title, setTitle] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addTask({ title });
+    setTitle("");
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="mb-4">
+      <div className="mb-2">
+        <label className="block text-gray-900 font-semibold text-xl my-3">
+          Title
+        </label>
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Enter task title"
+          className="w-full px-3 py-2 border rounded bg-[#B2C6B6] placeholder-gray-500 my-1"
+        />
+      </div>
+      <button
+        type="submit"
+        className="bg-[#185a4c] text-white rounded-xl px-4 py-2"
+      >
+        <span className="font-bold">+</span> Add
+      </button>
+    </form>
+  );
+};
+
+export default TaskForm;
